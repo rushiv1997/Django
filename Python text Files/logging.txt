@@ -1,0 +1,154 @@
+logging:
+
+
+default:
+
+1.warning and above message
+2.error messages print on console
+3.filemode ---> append
+
+
+
+
+DEBUG:root:debug message
+INFO:root:info message
+CRITICAL:root:Critical message
+ERROR:root:Error message
+WARNING:root:Warning Message
+
+
+
+level:logger:message
+------------------------------------------------------------------------------------------
+import logging
+
+logging.basicConfig(filename='python_log.log',level=10,format = '%(asctime)s:%(levelname)s:%(message)s',
+                    datefmt='%m/%d/%Y %I:%M:%S %p')
+
+logging.debug("debug message")
+logging.info("info message")
+logging.critical("Critical message")
+logging.error("Error message")
+logging.warning("Warning message")
+--------------------------------------------------------------------------------------------
+import logging
+
+logging.basicConfig(filename='python_log.log',level=10,format = '%(asctime)s:%(levelname)s:%(message)s',
+                    datefmt='%m/%d/%Y %I:%M:%S %p')
+
+try:
+    logging.info("File reading in process")
+    with open('test134.py') as fp:
+        data=fp.read()
+        print(data)
+        logging.info("File Processed")
+
+except FileNotFoundError as msg:
+    print(msg)
+    logging.exception(f"exception message{msg}:")
+logging.info("Program completed")
+
+
+Output as below in logfile as 'python_log.log':-
+
+(1) if file not present.
+
+06/01/2022 03:54:50 PM:INFO:File reading in process
+06/01/2022 03:54:50 PM:ERROR:exception message[Errno 2] No such file or directory: 'test134.py':
+Traceback (most recent call last):
+  File "C:\Users\HPword\Desktop\pythonProject30\test1.py", line 8, in <module>
+    with open('test134.py') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'test134.py'
+06/01/2022 03:54:50 PM:INFO:Program completed
+
+(2)If file is present.
+
+06/01/2022 03:47:46 PM:INFO:File reading in process
+06/01/2022 03:47:46 PM:INFO:File Processed
+06/01/2022 03:47:46 PM:INFO:Program completed
+
+-----------------------------------------------------------------------------------------------------
+
+
+Logger:-
+
+
+import logging
+
+logging.basicConfig(filename='python_log.log',level=10,format = '%(asctime)s:%(name)s:%(levelname)s:%(message)s',
+                    datefmt='%d/%m/%Y %H:%M:%S %p')
+logger = logging.getLogger("sample.py")
+
+try:
+    logger.info("File reading in process")
+    with open('test134.py') as fp:
+        data=fp.read()
+        print(data)
+        logger.info("File Processed")
+
+except FileNotFoundError as msg:
+    print(msg)
+    logger.exception(f"exception message{msg}:")
+logger.info("Program completed")
+
+
+Output as below in logfile as 'python_log.log':-
+
+(1) if file not present.
+
+01/06/2022 16:43:51 PM:sample.py:INFO:File reading in process
+01/06/2022 16:44:01 PM:sample.py:INFO:File reading in process
+01/06/2022 16:44:01 PM:sample.py:ERROR:exception message[Errno 2] No such file or directory: 'test134.py':
+Traceback (most recent call last):
+  File "C:\Users\HPword\Desktop\pythonProject30\test1.py", line 9, in <module>
+    with open('test134.py') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'test134.py'
+01/06/2022 16:44:01 PM:sample.py:INFO:Program completed
+
+(2)If file is present.
+
+01/06/2022 16:46:10 PM:sample.py:INFO:File reading in process
+01/06/2022 16:46:10 PM:sample.py:INFO:File Processed
+01/06/2022 16:46:10 PM:sample.py:INFO:Program completed
+
+--------------------------------------------------------------------------------------------
+
+import logging
+
+logging.basicConfig(filename='python_log.log',level=10,format = '%(asctime)s:%(name)s:%(levelname)s:%(message)s',
+                    datefmt='%d/%m/%Y %H:%M:%S %p')
+logger = logging.getLogger(str(__file__).split('/')[-1])
+
+try:
+    logger.info("File reading in process")
+    with open('test134.py') as fp:
+        data=fp.read()
+        print(data)
+        logger.info("File Processed")
+
+except FileNotFoundError as msg:
+    print(msg)
+    logger.exception(f"exception message{msg}:")
+logger.info("Program completed")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+Garbage collection:-
+
+def data_process(temp):
+    processed_list = [i*i for i in temp]
+    temp_list = processed_list*2  # here no use of temp_list,so delete this and this is called as garbage collection.
+
+    del temp_list
+    return processed_list
+
+data=data_process([1,2,3])
+print(data)

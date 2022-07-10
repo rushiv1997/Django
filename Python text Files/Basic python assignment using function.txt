@@ -1,0 +1,111 @@
+1.Python program to calculate the avg of numbers in lists.
+
+def AvgNum():
+    list = []
+    for i in range(5):
+        list.append(i)
+        b=len(list)
+    Sum = sum(list)
+    Avg = Sum /b
+    print("List:",list)
+    print("Total number in list:",b)
+    print("Sum of list:",Sum)
+    print("Avg of list:",Avg)
+
+def main():
+    AvgNum()
+
+if __name__=='__main__':
+    main()
+
+o/p:-
+List: [0, 1, 2, 3, 4]
+Total number in list: 5
+Sum of list: 10
+Avg of list: 2.0
+=====================================================================
+2.Python program to exchange the values of two numbers without using third variable.
+
+def SwapNum():
+    Num1 = int(input("Enter the 1st number:"))
+    Num2 = int(input("Enter the 2nd number:"))
+    Num1,Num2=Num2,Num1
+    print(f"Exchange number are {Num1} and {Num2}")
+
+def main():
+    SwapNum()
+
+if __name__=='__main__':
+    main()
+
+o/p:-
+Enter the 1st number:3
+Enter the 2nd number:8
+Exchange number are 8 and 3
+========================================================================
+3.python program to a read number n and compute n+nn+nnn+nnnn.
+
+def CompNum():
+    Num=int(input("Enter the Number:"))
+    Temp=str(Num)
+    t1=Temp+Temp
+    t2=Temp+Temp+Temp
+    Comp=Num+int(t1)+int(t2)
+    print("Compute:",Comp)
+
+def main():
+    CompNum()
+
+if __name__=='__main__':
+    main()
+
+o/p:-
+Enter the Number:5
+Compute: 615
+=======================================================================
+4.Python progam to reverse the given number.
+
+def ReverseNum():
+    num=int(input("Enter the number:"))
+    rev=0
+    while(num>0):
+        rev=(rev*10)+num%10
+        num=num//10
+    print("Reverse number is:",rev)
+
+def main():
+    ReverseNum()
+
+if __name__=='__main__':
+    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

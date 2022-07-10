@@ -1,0 +1,91 @@
+import threading
+print(threading.current_thread().name)
+print("gdasdfgsadgsdg")
+def add():
+    for i in range(1,15):
+        print("child thread")
+        
+def m1():
+
+    for i in range(16):
+        print("m1")
+t1 = threading.Thread(target=add)
+t2 = threading.Thread(target=m1)
+t1.start()
+t2.start()
+print("asfasdfgsdafg")
+=====================================================================
+
+from threading import Thread,current_thread
+import time
+def m1():
+    print(current_thread().getName())
+    current_thread().setName('m1 thread')
+    x = input("enter the name")
+    print(current_thread().getName(),current_thread().ident)
+def m2():
+    print(current_thread().getName())
+    current_thread().setName('m2 thread')
+    x = input("enter the name")
+    print(current_thread().getName(),current_thread().ident)
+t1 = Thread(target=m1)
+t2 = Thread(target=m2)
+
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+
+print(current_thread().getName())
+===================================================================
+from time import sleep
+from threading import *
+class Hello(Thread):
+    def run(self):
+        for i in range(5):
+            print("Hello")
+            sleep(1)
+class Hi(Thread):
+    def run(self):
+        for i in range(5):
+            print("Hi")
+            sleep(1)
+
+t1=Hello()
+t2=Hi()
+
+t1.start()
+sleep(0.2)
+t2.start()
+
+t1.join()
+t2.join()
+print("Bye")
+==================================================================
+import time
+import threading
+
+def calc_square(numbers):
+   for n in numbers:
+       time.sleep(0.4)
+       print("square:",n*n)
+
+def calc_cube(numbers):
+    for n in numbers:
+        time.sleep(0.4)
+        print("cube:",n*n*n)
+
+arr=[2,3,4,5]
+
+t=time.time()
+
+t1=threading.Thread(target=calc_square,args=(arr,))
+t2=threading.Thread(target=calc_cube,args=(arr,))
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print("done in:",time.time()-t)

@@ -1,0 +1,207 @@
+
+1. Python program to sort Python Dictionaries by Keys 
+
+#Function calling
+def py_dict():
+
+    # Declaration Empty Dictionary
+    key_value ={}
+
+    # Initializing Value
+    key_value[23] = 56
+    key_value[45] = 123
+    key_value[98] = 896
+    key_value[12] = 452
+    key_value[15] = 562
+    key_value[6] = 500
+
+    print("Keys are:")
+
+    #Sorting the keys
+    for i in sorted(key_value.keys()):
+        print(i,end="  ")
+
+def main():
+    #Calling Function
+    py_dict()
+
+#Calling Main Function
+if __name__ =="__main__":
+    main()
+
+o/p:-
+Keys are:
+12  15  23  45  98  
+------------------------------------------------------------------
+def py_dict():
+    key_value  = {45:56,12:566,23:999,15:231,98:455}
+
+    print("Keys are:")
+    for i in sorted(key_value.keys()):
+        print(i,end="  ")
+
+
+def main():
+    py_dict()
+
+if __name__=='__main__':
+    main()
+--------------------------------------------------------------------
+f1 = {'BMW':56000000,'Audi':45000000,'Mercedes':60000000,'Thar':10000000}
+print(sorted(f1.items(),key=lambda x:x[0]))
+
+o/p:-
+[('Audi', 45000000), ('BMW', 56000000), ('Mercedes', 60000000), ('Thar', 10000000)]
+==========================================================================================================
+2. Python program to sort Python Dictionaries by Values 
+#Function calling
+def py_dict():
+
+    # Declaration of Empty Dictionary
+    key_value ={}
+
+    # Initializing Value
+    key_value[23] = 56
+    key_value[45] = 123
+    key_value[98] = 896
+    key_value[12] = 452
+    key_value[15] = 562
+    key_value[6] = 500
+
+    print("Values are:")
+
+    #Sorting the keys
+    for i in sorted(key_value.values()):
+        print(i,end="  ")
+
+def main():
+    #Calling Function
+    py_dict()
+
+#Calling Main Function
+if __name__ =="__main__":
+    main()
+
+o/p:-
+Values are:
+56  123  452  500  562  896 
+---------------------------------------------------------------------
+f1 = {'BMW':56000000,'Audi':45000000,'Mercedes':60000000,'Thar':10000000}
+print(sorted(f1.items(),key=lambda x:x[1]))
+
+o/p:-
+[('Thar', 10000000), ('Audi', 45000000), ('BMW', 56000000), ('Mercedes', 60000000)]
+===================================================================================
+3. Python program to find the sum of all items in a dictionary.
+
+def returnSum(dict):
+    list = []
+    for i in dict:
+        list.append(dict[i])
+        final = sum(list)
+    return final
+
+dict = {'a':100,'b':200}
+print("Sum:",returnSum(dict))
+---------------------------------------------------------
+def returnSum(dict):
+    sum = 0
+    for i in dict.values():
+        sum = sum + i
+    return sum
+
+dict = {'a':100,'b':200,'c':300}
+print("Sum:",returnSum(dict))
+--------------------------------------------------------
+def retunSum(dict):
+    sum = 0
+    for i in dict:
+        sum = sum+dict[i]
+    return sum
+
+dict = {'a':100,'b':200,'c':300,'d':400}
+print("Sum:",returnSum(dict))
+-------------------------------------------------------
+ef returnSum(dict):
+    return sum(dict.values())
+
+dict = {'a':100,'b':200,'c':300,'c':400,'e':500}
+print("Sum:",returnSum(dict))
+
+o/p:-
+sum:
+600
+========================================================================================
+4. Python program to remove a key from a dictionary 
+
+def removeKey():
+    key_value  = {'a':1,'b':2,'c':3,'d':4}
+    print("Initial Dict:",key_value)
+    key = input("Enter the key to remove:")
+    if key in key_value:
+        del(key_value[key])
+    else:
+        print("key not found")
+    print("Updated Dict is:",key_value)
+
+def main():
+    removeKey()
+
+if __name__=='__main__':
+    main()
+
+o/p:-
+Initial Dict: {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+Enter the key to remove:d
+Updated Dict is: {'a': 1, 'b': 2, 'c': 3}
+
+============================================================================================
+5. Python program to merge two Dictionaries.
+
+def mergeDict():
+    a = {'a':1,'b':2,'c':3,'d':4}
+    print("1st Dict:",a)
+    b = {'e':5,'f':6,'g':7,'h':8}
+    print("\n2nd Dict:", b)
+    a.update(b)
+    print("\nMerged dict is:",a)
+
+def main():
+    mergeDict()
+
+if __name__=='__main__':
+    main()
+
+
+o/p:-
+1st Dict: {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+2nd Dict: {'e': 5, 'f': 6, 'g': 7, 'h': 8}
+Merged dict is: {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

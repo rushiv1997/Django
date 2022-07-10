@@ -1,0 +1,384 @@
+method vs constructor
+======================
+method is envoke by using object
+name --- any name
+bussiness logic
+
+constrctor :
+========================
+name always ---__init__()
+envoke at the time of object creation
+declaration and initialization
+
+
+
+Types of variable:
+
+1.instance variable ----> object level
+
+value of instance variable changes object to object
+
+create /define  ---  self.sal 
+
+for accessing instance varibale we need self,obj ref
+
+class Student:
+    def __init__(self,roll,name,city):
+        self.roll=roll
+        self.name=name
+        self.city=city
+    def show(self):
+        print("Roll:",self.roll)
+        print("Name:",self.name)
+        print("City:",self.city)
+
+s1=Student(101,"Rushi","Pune")
+s1.show()
+print("*"*50)
+s2=Student(102,"Ram","Pune")
+s2.show()
+--------------------------------------------------------------------
+
+#where we can declare instance variable:
+=========================================
+1.inside constructor by using self
+2.inside instance method by using self
+3.outside class by using obj ref
+
+class Student:
+    def __init__(self,roll,name,city):
+        self.roll=roll
+        self.name=name
+        self.city=city
+    def show(self):
+        self.time='10.00 AM'
+        print("Roll:",self.roll)
+        print("Name:",self.name)
+        print("City:",self.city)
+        print("Time:",self.time)
+        print("Age:",self.age)
+
+s1=Student(101,"Rushi","Pune")
+s1.age=15
+s1.show()
+print("*"*50)
+s2=Student(102,"Ram","Pune")
+s2.age=13
+s2.show()
+-----------------------------------------------
+class Operation:
+    def add(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"Addition of {self.a} and {self.b} is:{self.a+self.b}")
+    def sub(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"Subtraction of {self.a} and {self.b} is:{self.a-self.b}")
+    def mul(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"Multiplication of {self.a} and {self.b} is:{self.a*self.b}")
+
+obj=Operation()
+obj.add(10,20)
+obj.sub(10,20)
+obj.mul(10,20)
+
+
+
+=================================================================
+2.static variable ----> class level
+only one copy will crate and share by all objects
+
+it just like global variable --> inside class
+
+to access classvariable or static variable we can use -----> classname 
+
+class Student:
+    school_name  = 'PODAR'
+    school_city  = 'Pune'
+    def __init__(self,roll,name,city):
+        self.roll = roll
+        self.name =name
+        self.city =city
+
+    def show(self):
+        print("Roll :",self.roll)
+        print("Name :",self.name)
+        print("City :",self.city)
+        print("School Name :",Student.school_name)
+        print("School City :",Student.school_city)
+
+s1 = Student(101,'Abc','Pune')
+s1.show()
+
+================================================================
+  3.local variable ----> method level
+
+class Student:
+    school_name='Podar'----->#class variable/static variable
+    school_city="Pune"----->#class variable/static variable
+    def __init__(self,roll,name,city,marks):
+        self.roll=roll---->#instace variable
+        self.name=name
+        self.city=city
+        self.marks=marks
+    def show(self):
+        temp = self.marks*100---->#temp----#local variable
+        print("Roll:",self.roll)
+        print("Name:",self.name)
+        print("City:",self.city)
+        print("School Name:",Student.school_name)
+        print("school City:",Student.school_city)
+        print(temp)
+    def m1(self):
+        a=100
+        b=200
+        print(a+b)
+        
+
+s1=Student(101,"Rushi","Pune",0.50)
+s1.show()
+s1.m1()
+===================================================================
+Types of Methods:-
+
+1)Instance Method
+2)Class Method
+3)Static Method
+
+1)Instance method:-
+
+1)A method which is used to perform operation on object.
+2)Always 1st parameter is self.
+
+class Student:
+    school_name='Podar'
+    school_city="Pune"
+    def __init__(self,roll,name,city,marks):
+        self.roll=roll
+        self.name=name
+        self.city=city
+        self.marks=marks
+    def show(self):
+        temp = self.marks*100
+        print("Roll:",self.roll)
+        print("Name:",self.name)
+        print("City:",self.city)
+        print("School Name:",Student.school_name)
+        print("school City:",Student.school_city)
+        print(temp)
+    def m1(self):
+        if self.marks>75:
+            print("Outstanding")
+        else:
+            print("good")
+s1=Student(101,"Rushi","Pune",0.50)
+s1.show()
+s1.m1()
+===============================================================================
+
+2)Class Method:-
+1)A method which is used to deal with class variable.
+2)For calling the class method,we need decorator as @classmethod.
+3)We dont have to need to call object.
+
+class Student:
+    school_name='Podar'
+    school_city="Pune"
+    def __init__(self,roll,name,city,marks):
+        self.roll=roll
+        self.name=name
+        self.city=city
+        self.marks=marks
+    def show(self):
+        temp = self.marks*100
+        print("Roll:",self.roll)
+        print("Name:",self.name)
+        print("City:",self.city)
+        print("School Name:",Student.school_name)
+        print("school City:",Student.school_city)
+        print(temp)
+    def m1(self):
+        if self.marks>75:
+            print("Outstanding")
+        else:
+            print("good")
+
+    @classmethod
+	
+    def showclassvar(cls):
+        print(cls.school_name)
+        print(cls.school_city)
+
+#s1=Student(101,"Rushi","Pune",0.50)
+Student.showclassvar()
+#s1.m1()
+---------------------------------------------------------
+class DBconnection:
+    username = 'Admin'
+    password = "admin@123"
+    url = 'mysql/connection/login'
+
+    @classmethod
+
+    def connect(cls):
+        print("Connetion establishing")
+        print(f"Connection with username {DBconnection.username} and password {DBconnection.password}")
+        print("Connection established")
+
+    def DBinsert(self):
+        print("dfddfdffdfd")
+
+DBconnection.connect()
+obj=DBconnection()
+obj.DBinsert()
+
+3)Static Method:-
+
+1)For calling the class method,we need decorator as @staticmethod.
+2)Called as general utility method.
+
+
+
+class DBconnection:
+    username = 'Admin'
+    password = "admin@123"
+    url = 'mysql/connection/login'
+
+    @classmethod
+
+    def connect(cls):
+        print("Connetion establishing")
+        print(f"Connection with username {DBconnection.username} and password {DBconnection.password}")
+        print("Connection established")
+    @staticmethod
+
+    def DBinsert(a,b):
+        c = a+b
+        print(c)
+
+obj=DBconnection()
+obj.DBinsert(15,20)
+-------------------------------------------------
+class Employee:
+    company_name='IBM'
+    def __init__(self,id,sal):
+        self.id=id
+        self.sal=sal
+
+    def show(self):
+        total_sal,bonus=self.bonus_cal(self.sal)
+        print("Id is:",self.id)
+        print("Bonus:",bonus)
+        print("Total sal:",total_sal)
+        print("Companu Name:",Employee.company_name)
+
+    @staticmethod
+    def bonus_cal(sal):
+        bonus=(sal*100/10)
+        gross_sal=bonus+sal
+        return gross_sal,bonus
+
+e1=Employee(101,95000)
+e1.show()
+-------------------------------------------------------------
+class Employee:
+    company_name = "IBM"
+    def __init__(self,id,sal):
+        self.id = id
+        self.sal = sal
+
+    def show(self):
+        total_sal,bonus = self.bonus_cal(self.sal)
+        print("Id is:",self.id)
+        print("Bonus:",bonus)
+        print("Total Sal:",total_sal)
+        print("company Name:",Employee.company_name)
+
+    @staticmethod
+    def bonus_cal(sal):
+        bonus= (sal*100/10)
+        gross_sal = bonus+sal
+        return gross_sal,bonus
+
+    def m1(self):
+        self.m2()
+    def m2(self):
+        print("in m2")
+===============================================================================
+Assignment:
+
+class Operation:
+    def add(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"Addition of {self.a} and {self.b} is:{self.a+self.b}")
+    def sub(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"Subtraction of {self.a} and {self.b} is:{self.a-self.b}")
+    def mul(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"Multiplication of {self.a} and {self.b} is:{self.a*self.b}")
+    def div(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"division of {self.a} and {self.b} is:{self.a/self.b}")
+    def mod(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"Modulus of {self.a} and {self.b} is:{self.a%self.b}")
+    def expo(self,a,b):
+        self.a=a
+        self.b=b
+        print(f"Exponent of {self.a} and {self.b} is:{self.a**self.b}")
+
+obj=Operation()
+
+choice=int(input("Enter the choice:"))
+if choice==1:
+    x=int(input("Enter the value:"))
+    y=int(input("Enter the value:"))
+    obj.add(x,y)
+elif choice==2:
+    x = int(input("Enter the value:"))
+    y = int(input("Enter the value:"))
+    obj.sub(x,y)
+elif choice==3:
+    x = int(input("Enter the value:"))
+    y = int(input("Enter the value:"))
+    obj.mul(x,y)
+elif choice==4:
+    x = int(input("Enter the value:"))
+    y = int(input("Enter the value:"))
+    obj.div(x,y)
+elif choice==5:
+    x = int(input("Enter the value:"))
+    y = int(input("Enter the value:"))
+    obj.mod(x,y)
+elif choice==6:
+    x = int(input("Enter the value:"))
+    y = int(input("Enter the value:"))
+    obj.expo(x,y)
+else:
+    print("Choice is yours")
+
+===================================================================
+Innnerclass:-
+
+class Company:
+    def __init__(self):
+        print("Company object creation")
+    class Employee:
+        def __init__(self):
+            print("Employee object creation")
+        def show(self):
+            print("inside show method")
+obj=Company()
+obj2=obj.Employee()
+obj2.show()
+
+
