@@ -1,0 +1,22 @@
+import os
+
+import pathlib
+print(os.getcwd())
+os.chdir('C:\\Users\\kanti\\OneDrive\\Desktop\\Python30')
+print(os.getcwd())
+with open('requirements.txt') as fp:
+    data = fp.read()
+    print(data)
+
+print(os.getcwd())
+os.chdir('..')
+path = os.path.join(os.getcwd(),'Barclays')
+
+os.chdir(path)
+
+print("final path:",os.getcwd())
+
+print(os.getcwd())
+
+
+

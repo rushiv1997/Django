@@ -1,0 +1,190 @@
+Pickle
+
+
+JSON
+
+
+YAML
+
+
+
+1.Pickle:
+
+
+pickel.dump
+
+
+
+pickle.load
+*for writing*
+
+import pickle
+py_dict = {'name':'keshav','Age' : 25,'sal':95000}
+with open('test.pickle','wb') as fp:
+    pickle.dump(py_dict,fp)
+
+o/p:-
+
+=================================================
+*for reading*
+
+import pickle
+with open('test.pickle','rb') as fp:
+    data=pickle.load(fp)
+    print(data)
+
+o/p:-
+{'name': 'keshav', 'Age': 25, 'sal': 95000}
+==================================================
+2.By using JSON
+
+for serialization:
+
+json.dumps --> python dict to json string
+===============================================
+import json
+
+py_dict = {
+    'id':[101,102,103,'java',45.56],
+    'prdname':'iron ore',
+    'prdprice':95000,
+    'prdqnty':50,
+    'test':True,
+    'test1':None
+}
+
+js = json.dumps(py_dict)
+
+print(js)
+print(type(js))
+
+o/p:-
+{"id": [101, 102, 103, "java", 45.56], "prdname": "iron ore", "prdprice": 95000, "prdqnty": 50, "test": true, "test1": null}
+<class 'str'>
+
+
+
+===================================================
+json.loads(pyd  )
+================================================
+
+json string ---> dict
+
+import json
+e = """{"id": [101, 102, 103, "java", 45.56], 
+     "prdname": "iron ore", "prdprice": 95000, 
+     "prdqnty": 50, "test": true,
+     "test1": null}"""
+
+pyd = json.loads(e)
+
+print(pyd)
+
+print(type(pyd))
+
+o/p:-
+{'id': [101, 102, 103, 'java', 45.56], 'prdname': 'iron ore', 'prdprice': 95000, 'prdqnty': 50, 'test': True, 'test1': None}
+<class 'dict'>
+
+===================================================
+json.dump --> python dict to json string --->json file
+
+import json
+py_dict = {
+    'id':[101,102,103,'java',45.56],
+    'prdname':'iron ore',
+    'prdprice':95000,
+    'prdqnty':50,
+    'test':True,
+    'test1':None
+}
+with open('Test.json','w') as fp:
+    json.dump(py_dict,fp)
+
+================================================================
+
+import json
+
+with open('test1.json','r') as fp:
+    data = json.load(fp)
+    print(data)
+    print(type(data))
+==========================================================
+YAML:-
+
+
+form pyaml import yaml
+py_dict = {
+            'prdid':45,
+            'prdname':'python',
+            'prdqnty':200
+          }
+ys = yaml.dump(py_dict)
+print(ys)
+
+o/p:-
+prdid: 45
+prdname: python
+prdqnty: 200
+================================================================
+from pyaml import yaml
+py_dict = {  'prdid':45,
+             'prdname':'python',
+             'prdqnty':200
+
+}
+with open('Test5.yaml','w') as fp:
+    yaml.dump(py_dict,fp)
+==================================================================
+import yaml
+dict_list = [
+    {
+            'prdid':45,
+            'prdname':'python',
+            'prdqnty':201
+    },
+    {
+            'prdid':50,
+            'prdname':'python',
+            'prdqnty':202
+    },
+    {
+            'prdid':55,
+            'prdname':'python',
+            'prdqnty':203
+    },
+    {
+            'prdid':60,
+            'prdname':'python',
+            'prdqnty':204
+    }
+]
+for d in dict_list:
+    with open('Test10.yaml','a') as fp:
+        yaml.dump(d,fp)
+        fp.write("\n")
+        print()
+print("All objects dumped")
+====================================================================
+from pyaml import yaml
+with open("Test5.yaml",'r') as fp:
+    data = fp.read()
+print(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

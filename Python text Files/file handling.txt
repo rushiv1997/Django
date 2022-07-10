@@ -1,0 +1,264 @@
+def fetchemail(filename):
+    fp = open(filename,'r')
+    data = fp.readlines()
+    email = data[-1]
+    return email
+
+email_id = fetchemail('C:\\Users\\kanti\\OneDrive\\Desktop\\yt.txt')
+
+print(email_id)
+
+
+fp = open('resume.txt','w')
+fp.write('11\n')
+fp.write('12\n')
+fp.write('13\n')
+fp.close()
+
+
+***************************
+
+writeline(list of lines)
+
+fp = open('123.txt','w')
+lines = ['this is first line\n','second line\n','third line']
+fp.writelines(lines)
+fp.close()
+
+******************************************
+fp = open('C:\\Users\\kanti\\OneDrive\\Desktop\\python 22\\123.txt','w')
+lines = ('this is first line\n','second line\n','third line')
+fp.writelines(lines)
+fp.write('\nCricket is a bat-and-ball \\ngame played between two teams of eleven players on a field at the centre of which is a 22-yard (20-metre) pitch with a wicket at each end, each comprising two bails balanced on three stumps. ... The earliest reference to cricket is in South East England in the mid-16th century.')
+fp.write('bye')
+fp.close()
+
+
+*********************************************
+fp = open('123.txt','r')
+data = fp.readline()
+print(data)
+
+print(fp.writable())
+fp.close()
+
+
+
+
+read -defualt mode
+
+
+if file present then read operation
+
+if file not present 
+then
+Traceback (most recent call last):
+  File "C:/Users/kanti/file handling/test.py", line 2, in <module>
+    fp = open('refefs.txt','r')
+FileNotFoundError: [Errno 2] No such file or directory: 'refefs.txt'
+
+read() --- total data read from file
+
+read(n) --> to read 'n' characters from file
+
+readline() --> to read only one line
+
+readlines() -->to read all lines into a list
+
+
+fp = open('123.txt')
+data = fp.read(10)
+print(data)
+print(fp.writable())
+fp.close()
+
+
+
+#r+ =-read then write
+#file should be present
+fp = open('123.txt','r+')
+data = fp.readline()
+print(fp.tell())
+fp.write(data)
+print(fp.tell())
+fp.close()
+
+
+fp =open('test.txt','w+')  # it will check file present --->then override
+fp.write("new content")
+print(fp.tell())
+fp.seek(0)
+print(fp.tell())
+data = fp.read()
+print(data)
+fp.close()
+
+
+fp = open('test.txt','a+')
+fp.write("hi from append mode")
+fp.seek(0)
+data =  fp.read()
+print(data)
+fp.close()
+
+
+
+write 
+
+file present
+overide
+
+
+exclusive mode
+
+file present ---FileExistError
+
+not present
+
+then  create ---write mode
+
+with open  
+file auto close
+
+
+open
+
+manually we need to close
+
+
+text
+
+r
+
+w
+
+a
+
+r+
+
+w+
+
+a+
+
+x
+
+
+bin
+
+rb
+
+wb
+
+ab
+
+rb+
+
+wb+
+
+ab+
+
+xb
+
+
+# content of file1 copy to file2
+
+# by using google
+
+first file content write second file 
+first ---delete
+
+#third file present return message that file is already present
+
+then file is not present ----write
+
+# file present then write if file not present then return message ---file is not present
+
+fun
+filename ---user
+
+fun1 ---detect file present or not
+
+fun2 --if file not present then create file 
+
+fun3 --override
+
+fun4 ---adding new content
+
+# file 
+
+no of lines --------readlines---list--len
+word
+char
+
+with open('test12344.txt') as f:
+    print("file name",f.name)
+    print("file mode",f.mode)
+    print("file isreadable",f.readable())
+    print("file iswritable",f.writable())
+    print("file isfileclosed",f.closed)
+print("Is fileclosed",f.closed)
+****************************************************************
+
+
+import csv
+with open('test.csv','r') as fp:
+    robj= csv.reader(fp)
+    data = list(robj)
+    for line in data:
+        for i in line:
+            print(i,end='  ')
+        print()
+import pandas as pd
+df = pd.read_csv('test.csv')
+print(df)
+
+with open("test.csv",'w',newline="") as fp:
+    wobj = csv.writer(fp)
+    wobj.writerow(('name','age','address'))
+    noofrows = int(input("Enter the no.of.rows:"))
+    for i in range(noofrows):
+        name=input("Enter the name:")
+        age=int(input("Enter the age:"))
+        address =input("Enter the address:")
+        wobj.writerow([name,age,address])
+
+
+import csv
+with open('test.csv','r') as fp:
+    robj= csv.reader(fp)
+    data = list(robj)
+    print(data)
+    with open('copycsv.csv','w',newline="") as fp:
+        wobje = csv.writer(fp)
+        for d in data:
+            wobje.writerow(d)fp = open('tt.txt','w')
+
+
+name=input("Enter the lines").split('.')
+for i in name:
+    print(i)
+    fp.write(i)
+    fp.write("\n")
+fp.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

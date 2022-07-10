@@ -1,0 +1,46 @@
+Access Specifier:-
+
+class A:
+    test=100 #public anywhere
+    _t1='python' #protected accesable in child class
+    __t2='Java' #private within class
+    def m1(self):
+        print("in m1")
+        print(A.__t2)
+class B(A):
+    def m2(self):
+        print(A.test)
+        print(A._t1)
+
+        print("in m2")
+class C(B):
+    def m3(self):
+        print("in m3")
+
+obj = C()
+obj.m1()
+obj.m2()
+obj.m3()
+=======================================================
+Polymorphism:
+
+class A:
+    def m1(self,a):
+        print("a")
+    def m1(self,a,b):
+        print("b")
+    def m1(self,a,b,c):
+        print("c")
+obj=A()
+obj.m1(10,20,30)
+-------------------------------
+operator overloading:-
+
+class A:
+    def __init__(self,no):
+        self.no=no
+    def __add__(self, other):
+        return (self.no+ other.no)
+obj  = A(400)
+obj1 = A(500)
+print(obj+obj1)

@@ -1,0 +1,33 @@
+  Write Python programs using Functions: 
+1. Python program to sort Python Dictionaries by Keys.(done)
+2. Python program to sort Python Dictionaries by Values.(done) 
+3. Python program to find the sum of all items in a dictionary.(done)
+4. Python program to remove a key from a dictionary.(done)
+5. Python program to merge two Dictionaries.(done)
+6. Program to create a grade calculator in Python.
+7. Print anagrams together in Python using List and Dictionary.
+8. Check if binary representations of two numbers are an anagram. 
+9. Python Counter to find the size of the largest subset of anagram words. 
+10. Python Dictionary to find mirror characters in a string. 
+11. Counting the frequencies in a list using a dictionary in Python. 
+12. Python program to convert a list of Tuples into Dictionary. 
+13. Python dictionary, set and counter to check if frequencies can become the same.
+14. Scraping And Finding Ordered Words In A Dictionary using Python. 
+15. Create a list of tuples from the given list having a number and its cube in each tuple.
+16. Sort a list of tuples by the second Item. 
+17. Python Program for Insertion Sort, QuickSort, Selection, Bubble Sort and Merge Sort. 
+18. Python program to convert time from 12 to 24-hour format(08:30:25 PM to 20:30:25). 
+19. Python Program for Find largest prime factor of a number. 
+20. Python Program for Product of unique prime factors of a number. 
+21. Python Program for Find sum of odd factors of a number. 
+22. Python Program to Check if binary representation is a palindrome. 
+23. Python Program for Number of elements with odd factors in a given range. 
+24. Python Program for Common Divisors of Two Numbers. 
+25. Python Program to Check if a count of divisors is even or odd. 
+26. Python Program to Find the minimum sum of factors of a number. 
+27. Python Program to find Difference between sums of odd and even digits. 
+28. Python Program for Largest and Smallest K digit number divisible by X. 
+29. Python Program to calculate the area of a Tetrahedron. 
+30. Python Program to Find the perimeter of a cylinder. 
+31. Python Program to Find the vertex, focus, and directrix of a parabola. 
+32. Python program to find the most occurring character and its count.  

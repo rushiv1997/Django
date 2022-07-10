@@ -1,0 +1,387 @@
+#Types of Inheritance:-
+
+1)Single inheritance
+2)Multi-level inheritance
+3)Multiple inheritance
+4)Hierarchical Inheritance
+5)Hybrid Inheritance
+
+1)Single inheritance:-
+
+In this inheritance, a derived class is created from a single base class.
+In the given example, Class A is the parent class and Class B is the child class since Class B inherits the features and behavior of the parent class A.
+
+for e.g:-
+
+class A:
+    def __init__(self):
+        print("in init A")
+    def m1(self):
+        print("in m1")
+    def m2(self):
+        print("in m2")
+class B(A):
+    def m3(self):
+        print("in m3")
+
+obj=B()
+obj.m1()
+obj.m2()
+obj.m3()
+
+=====================================================================
+2)2)Multi-level inheritance:-
+
+In this inheritance, a derived class is created from another derived class.
+In the given example, class c inherits the properties and behavior of class B and class B inherits the properties and behavior of class A. 
+So, here A is the parent class of B and class B is the parent class of C. 
+So, here class C implicitly inherits the properties and behavior of class A along with Class B i.e there is a multilevel of inheritance.
+
+for e.g.:-
+
+class A:
+    def __init__(self):
+        print("in init A")
+    def m1(self):
+        print("in m1")
+    def m2(self):
+        print("in m2")
+class B(A):
+    def m3(self):
+        print("in m3")
+class C(B):
+    def m4(self):
+        print("in m4")
+class D(C):
+    def m5(self):
+        print("in m5")
+
+obj=D()
+obj.m1()
+obj.m2()
+obj.m3()
+obj.m4()
+obj.m5()
+===============================================================
+3)Multiple inheritance:-
+
+In this inheritance, a derived class is created from more than one base class. 
+This inheritance is not supported by .NET Languages like C#, F#, etc., and Java Language.
+In the given example, class c inherits the properties and behavior of class B and class A at the same level. 
+So, here A and Class B both are the parent classes for Class C.
+
+for e.g:-
+
+class A:
+    def m1(self):
+        print("in m1")
+class B:
+    def m2(self):
+        print("in m2")
+class C(A,B):
+    def m3(self):
+        print("in m3")
+
+obj=C()
+obj.m1()
+obj.m2()
+obj.m3()
+==============================================================
+4)Hierarchical Inheritance:-
+
+
+In this inheritance, more than one derived class is created from a single base class and 
+further child classes act as parent classes for more than one child class.
+In the given example, class A has two children class B and class D. Further, class B and class C both are having two children - class D and E; class F and G respectively.
+
+for e.g:-
+
+class A:
+    def m1(self):
+        print("in m1")
+class B(A):
+    def m2(self):
+        print("in m2")
+class C(A):
+    def m3(self):
+        print("in m3")
+class D(C):
+    def m4(self):
+        print("in m4")
+class E(C):
+    def m5(self):
+        print("in m5")
+class F(B):
+    def m6(self):
+        print("in m6")
+class G(B):
+    def m7(self):
+        print("in m7")
+
+
+obj=C()
+obj.m1()
+
+
+==============================================================
+5)Hybrid Inheritance:-
+
+This is a combination of more than one inheritance. 
+Hence, it may be a combination of Multilevel and Multiple inheritance or Hierarchical and Multilevel inheritance Hierarchical and 
+Multipath inheritance, or Hierarchical, Multilevel and Multiple inheritances.
+
+Since .NET Languages like C#, F#, etc. do not support multiple and multipath inheritance. 
+Hence hybrid inheritance with a combination of multiple or multipath inheritances is not supported by .NET Languages.
+
+for e.g:-
+
+class A:
+    def m1(self):
+        print("in m1")
+class B(A):
+    def m2(self):
+        print("in m2")
+class C(B):
+    def m3(self):
+        print("in m3")
+class D:
+    def m4(self):
+        print("in m4")
+class E(B,D):
+    def m5(self):
+        print("in m5")
+obj=E()
+obj.m1()
+obj.m2()
+obj.m4()
+obj.m5()
+=================================================================
+MRO[Method Resolution Order]:-
+
+MRO is a concept used in inheritance. It is the order in which a method is searched for in a classes hierarchy and 
+is especially useful in Python because Python supports multiple inheritance.
+
+In Python, the MRO is from bottom to top and left to right. 
+This means that, first, the method is searched in the class of the object. 
+If it’s not found, it is searched in the immediate super class. 
+In the case of multiple super classes, it is searched left to right, in the order by which was declared by the developer.
+
+for e.g:-
+
+class A:
+    def m1(self):
+        print("FROM M1--->A")
+class B(A):
+    def m2(self):
+        print("FROM M1--->B")
+class C(A):
+    def m3(self):
+        print("FROM M1--->C")
+class D(B,C):
+    def m4(self):
+        print("FROM M1--->D")
+
+obj=D()
+print(D.mro())
+
+o/p:-
+[<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>]
+=================================================================================================================
+Super Method:- It is used to call parent class.
+
+class A:
+    def m1(self):
+        print("Name")
+        print("Age")
+class B(A):
+    def m1(self):
+        super().m1()
+        print("City")
+        print("Sal")
+
+obj=B()
+obj.m1()
+
+o/p:-
+Name
+Age
+City
+Sal
+------------------------------------------------------
+class Test:
+    def m1(self):
+        print("Id")
+        print("Acc")
+class A(Test):
+    def m1(self):
+        super().m1()
+        print("Name")
+        print("Age")
+class B(A):
+    def m1(self):
+        super().m1()
+        print("City")
+        print("Sal")
+
+obj=B()
+obj.m1()
+
+o/p:-
+Id
+Acc
+Name
+Age
+City
+Sal
+----------------------------------------------------
+class Test:
+    def __init__(self):
+        print("Constructor from Test")
+    def m1(self):
+        print("Id")
+        print("Acc")
+class A(Test):
+    def __init__(self):
+        super().__init__()
+        print("Constructor from A ")
+    def m1(self):
+        super().m1()
+        print("Name")
+        print("Age")
+class B(A):
+    def __init__(self):
+        super().__init__()
+        print("Constructor from B")
+    def m1(self):
+        super().m1()
+        print("City")
+        print("Sal")
+
+obj=B()
+obj.m1()
+
+o/p:-
+Constructor from Test
+Constructor from A 
+Constructor from B
+Id
+Acc
+Name
+Age
+City
+Sal
+---------------------------------------------------
+class Details:
+    def __init__(self,id,name):
+        self.id=id
+        self.name=name
+    def show(self):
+        print("id is:",self.id)
+        print("name is:",self.name)
+class Add_Details(Details):
+    def __init__(self,id,name,city,sal):
+        super().__init__(id,name)
+        self.city=city
+        self.sal=sal
+    def show(self):
+        super().show()
+        print("city is:",self.city)
+        print("sal is:",self.sal)
+
+obj=Add_Details(101,'Rushi','pune',150000)
+obj.show()
+
+o/p:-
+id is: 101
+name is: Rushi
+city is: pune
+sal is: 150000
+---------------------------------------------------
+class Details:
+    company="IBM"
+    def __init__(self,id,name):
+        self.id=id
+        self.name=name
+    def show(self):
+        print("id is:",self.id)
+        print("name is:",self.name)
+class Add_Details(Details):
+    company="infosys"
+    def __init__(self,id,name,city,sal):
+        super().__init__(id,name)
+        self.city=city
+        self.sal=sal
+    def show(self):
+        super().show()
+        print("city is:",self.city)
+        print("sal is:",self.sal)
+    @classmethod
+    def companyname(cls):
+        print(super().company)
+        print(cls.company)
+
+obj=Add_Details(101,'Rushi','pune',150000)
+obj.show()
+Add_Details.companyname()
+
+
+o/p:-
+id is: 101
+name is: Rushi
+city is: pune
+sal is: 150000
+IBM
+infosys
+---------------------------------------------------------
+class Details:
+    company="IBM"
+    def __init__(self,id,name):
+        self.id=id
+        self.name=name
+    def show(self):
+        print("id is:",self.id)
+        print("name is:",self.name)
+class Add_Details(Details):
+    company="infosys"
+    def __init__(self,id,name,city,sal):
+        super().__init__(id,name)
+        self.city=city
+        self.sal=sal
+    def show(self):
+        super().show()
+        print("city is:",self.city)
+        print("sal is:",self.sal)
+    @classmethod
+    def companyname(cls):
+        print(super().company)
+        print(cls.company)
+
+class New_Add(Add_Details):
+    def __init__(self,id,name,city,sal,backgroud_check=False):
+        super().__init__(id,name,city,sal)
+        self.backgroud_check=backgroud_check
+    def show(self):
+        super().show()
+        print("background check in:",self.backgroud_check)
+
+obj=New_Add(101,'Rushi','pune',150000,True)
+obj.show()
+
+o/p:-
+
+id is: 101
+name is: Rushi
+city is: pune
+sal is: 150000
+background check in: True
+-------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

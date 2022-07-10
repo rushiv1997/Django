@@ -1,0 +1,215 @@
+#creating thread without using any class
+
+
+from threading import Thread
+import time
+def m1():
+    for i in range(5):
+        time.sleep(1)
+        print("In m1")
+
+def m2():
+    for i in range(5):
+        time.sleep(1)
+        print("In m2")
+
+def m3():
+    for i in range(5):
+        time.sleep(1)
+        print("In m3")
+
+t1 = Thread(target=m1)
+t2 = Thread(target=m2)
+t3 = Thread(target=m3)
+
+t1.start()
+time.sleep(0.2)
+t2.start()
+time.sleep(0.2)
+t3.start()
+
+t1.join()
+t2.join()
+t3.join()
+
+print("all threads are successfully executed")
+========================================================
+
+#creating thread by using Thread(extending) class
+
+from threading import Thread
+import time
+
+class Test(Thread):
+    def run(self):
+        print("in child class")
+        for i in range(10):
+            print("child")
+            time.sleep(1)
+
+
+t1 = Test()
+t1.start()
+for i in range(10):
+    time.sleep(1)
+    print("in main")
+
+print("all threads are successfully executed")
+---------------------------------------------------------
+from threading import Thread
+import time
+class Test:
+    def m1(self):
+        for i in range(10):
+            time.sleep(0.5)
+            print("in child class")
+    def m2(self):
+        for i in range(10):
+            time.sleep(0.5)
+            print("in child2 class")
+obj = Test()
+
+t1 = Thread(target=obj.m1)
+t2 = Thread(target=obj.m2)
+t1.start()
+t2.start()
+------------------------------------------------------------
+import threading
+from threading import Thread
+import time
+class Even_Odd(Thread):
+    def calc_even(self,number):
+        for i in number:
+            if i%2==0:
+                time.sleep(0.2)
+                print("Even:",i)
+    def calc_odd(self,number):
+        for i in number:
+            if i%2!=0:
+                time.sleep(0.2)
+                print("Odd:",i)
+
+arr=[1,2,3,4,5,6,7,8,9,10]
+
+obj=Even_Odd()
+
+t1 = threading.Thread(target=obj.calc_even,args=(arr,))
+t2 = threading.Thread(target=obj.calc_odd,args=(arr,))
+
+starttime=time.time()
+t1.start()
+time.sleep(0.2)
+t2.start()
+endtime=time.time()
+
+t1.join()
+t2.join()
+
+print("Time required:",endtime-starttime)
+
+
+
+
+==========================================================
+#3.creating thread without extending Thread class
+
+from threading import Thread
+import time
+def m1():
+
+    for i in range(10):
+        time.sleep(1)
+        print("in m1")
+
+
+def m2():
+    for i in range(10):
+        time.sleep(1)
+        print("in m2")
+starttime = time.time()
+m1()
+m2()
+endtime = time.time()
+print("Total time:",endtime-starttime)
+=============================================================
+#Identical Method:
+
+from threading import  *
+def show():
+    print("in show method")
+t1=Thread(target=show)
+
+t1.start()
+
+print("main:",current_thread().ident)
+print("Child:",t1.ident)
+--------------------------------------------
+from threading import  *
+import time
+def show():
+    print("Thread started......")
+    print("in show method")
+    print("Thread Ended......")
+def show1():
+    print("Thread started......")
+    print("in show method")
+    print("Thread Ended......")
+
+
+
+t1=Thread(target=show)
+t2=Thread(target=show1)
+t3=Thread(target=show)
+t4=Thread(target=show1)
+
+t1.start()
+t2.start()
+t3.start()
+t4.start()
+
+time.sleep(5)
+print("Thread active or not:",active_count())
+----------------------------------------------
+from threading import  *
+import time
+def show():
+    print("Thread started......")
+    print("in show method")
+    print("Thread Ended......")
+def show1():
+    print("Thread started......")
+    print("in show method")
+    print("Thread Ended......")
+
+t1=Thread(target=show)
+t2=Thread(target=show1)
+t3=Thread(target=show)
+t4=Thread(target=show1)
+
+t1.start()
+print("Is alive t1:",t1.is_alive())
+
+t2.start()
+print("Is alive t2:",t2.is_alive())
+
+t3.start()
+print("Is alive t3:",t3.is_alive())
+
+t4.start()
+print("Is alive t4:",t4.is_alive())
+
+time.sleep(8)
+
+print("Is alive t1:",t1.is_alive())
+print("Is alive t2:",t2.is_alive())
+print("Is alive t3:",t3.is_alive())
+print("Is alive t4:",t4.is_alive())
+
+print("Thread active or not:",active_count())
+-----------------------------------------
+
+
+
+
+
+
